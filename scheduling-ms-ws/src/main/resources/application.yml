@@ -1,12 +1,12 @@
 server:
   servlet:
     context-path: /scheduling
-  port: 8081
+  port: 8080
 spring:
   data:
     mongodb:
       database: scheduling
-      host: localhost
+      host: app_db
   cache:
     type: redis
   redis:
