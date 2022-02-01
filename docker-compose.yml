@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  app:
+    image: 'scheduling:latest'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - redis
+    links:
+      - "db:app_db"
+  db:
+    image: 'mongo'
+    container_name: db
+    volumes:
+      - "mongobdata:/data/db"
+    ports:
+      - "27017:27017"
+  redis:
+    image: "redis:latest"
+    container_name: "redis"
+volumes:
+  mongobdata:
