@@ -28,16 +28,21 @@ import java.util.stream.Collectors;
 public class SchedulerServiceImpl extends AbstractCrudService<SchedulerTO, SchedulerSearchData, SchedulerSerchResult, SchedulerVO, SchedulerRepository> implements SchedulerService {
 
 
-    public SchedulerServiceImpl(SchedulerRepository repository) {
+
+
+
+
+    private final WorkService workService;
+
+
+    private final CustomerService customerService;
+
+
+    public SchedulerServiceImpl(SchedulerRepository repository, WorkService workService, CustomerService customerService) {
         super(repository);
+        this.workService = workService;
+        this.customerService = customerService;
     }
-
-
-    @Autowired
-    private WorkService workService;
-
-    @Autowired
-    private CustomerService customerService;
 
     @Override
     public SchedulerTO create(SchedulerTO ẗo) {
